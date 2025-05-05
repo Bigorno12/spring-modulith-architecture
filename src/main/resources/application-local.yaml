@@ -11,8 +11,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        hbm2ddl:
-          auto: update
     generate-ddl: true
     open-in-view: false
   datasource:
@@ -30,3 +28,4 @@ spring:
     change-log: classpath:db/changelog/changelog-master.yaml
     password: ${DB_PASSWORD}
     url: ${DB_URL}
+    enabled: true

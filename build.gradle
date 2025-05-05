@@ -69,3 +69,7 @@ dependencyManagement {
 apply {
     plugin 'org.liquibase.gradle'
 }
+
+tasks.test {
+    useJUnitPlatform()
+}

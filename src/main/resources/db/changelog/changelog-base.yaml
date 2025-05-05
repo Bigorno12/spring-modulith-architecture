@@ -112,7 +112,7 @@ databaseChangeLog:
                     nullable: false
                   name: last_modified_date
                   type: timestamp
-            tableName: order
+            tableName: orders
   - changeSet:
       id: create-inventory-1
       author: pranav
