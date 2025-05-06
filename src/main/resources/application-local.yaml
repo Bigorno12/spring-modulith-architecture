@@ -33,3 +33,5 @@ spring:
     events:
       republish-outstanding-events-on-restart: true
       completion-mode: archive
+  main:
+    lazy-initialization: true
