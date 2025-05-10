@@ -6,7 +6,7 @@ import mu.elca.modulith.order.dto.OrderDto;
 import mu.elca.modulith.order.events.OrderEvent;
 import mu.elca.modulith.order.exception.ProductNotFoundException;
 import mu.elca.modulith.order.model.Order;
-import mu.elca.modulith.order.repo.OrderRepository;
+import mu.elca.modulith.order.repository.OrderRepository;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 

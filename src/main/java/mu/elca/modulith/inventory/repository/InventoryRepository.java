@@ -1,4 +1,4 @@
-package mu.elca.modulith.inventory.repo;
+package mu.elca.modulith.inventory.repository;
 
 import mu.elca.modulith.inventory.model.Inventory;
 import org.springframework.data.jpa.repository.JpaRepository;
