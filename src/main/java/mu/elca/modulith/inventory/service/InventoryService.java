@@ -17,6 +17,6 @@ public class InventoryService {
 
     @ApplicationModuleListener
     public void test(OrderEvent event) {
-        System.out.println(event);
+        log.info("Order Event: {}",event);
     }
 }

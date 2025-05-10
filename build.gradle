@@ -1,9 +1,9 @@
 plugins {
-    id 'java'
-    id 'org.springframework.boot' version '3.4.5'
-    id 'io.spring.dependency-management' version '1.1.7'
-    id 'io.freefair.lombok' version '8.13.1'
-    id 'org.liquibase.gradle' version '2.2.0'
+    id "java"
+    id "org.springframework.boot" version "3.4.5"
+    id "io.spring.dependency-management" version "1.1.7"
+    id "io.freefair.lombok" version "8.13.1"
+    id "org.liquibase.gradle" version "2.2.0"
 }
 
 group = 'mu.elca'
@@ -37,12 +37,12 @@ ext {
 dependencies {
     //Data + Web
     implementation "org.springframework.boot:spring-boot-starter-validation"
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-web"
 
     //Modulith
-    implementation 'org.springframework.modulith:spring-modulith-starter-core'
-    implementation 'org.springframework.modulith:spring-modulith-starter-jpa'
+    implementation "org.springframework.modulith:spring-modulith-starter-core"
+    implementation "org.springframework.modulith:spring-modulith-starter-jpa"
 
     //Database + Liquibase
     implementation "org.postgresql:postgresql:${postgresql}"
@@ -52,12 +52,12 @@ dependencies {
     liquibaseRuntime "org.liquibase.ext:liquibase-hibernate6:${liquibase_hibernate}"
 
     //Devtools
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
+    developmentOnly "org.springframework.boot:spring-boot-docker-compose"
 
     //Spring Modulith Test  s
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.springframework.modulith:spring-modulith-starter-test"
 }
 
 dependencyManagement {
@@ -67,7 +67,7 @@ dependencyManagement {
 }
 
 apply {
-    plugin 'org.liquibase.gradle'
+    plugin "org.liquibase.gradle"
 }
 
 tasks.test {
