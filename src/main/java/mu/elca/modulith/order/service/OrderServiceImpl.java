@@ -44,6 +44,9 @@ public class OrderServiceImpl {
                         .productPrice(order.productPrice())
                         .quantity(order.quantity())
                         .comments(order.comments())
+                        .deliveryAddress(order.deliveryAddress())
+                        .productName(order.productName())
+                        .status(order.status())
                         .build())
                 .orElseThrow(() -> new ProductNotFoundException("Id does not exist"));
         eventPublisher.publishEvent(OrderEvent.builder()
