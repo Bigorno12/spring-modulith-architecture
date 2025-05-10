@@ -32,6 +32,8 @@ ext {
     set('postgresql', "42.7.5")
     set('liquibase', "4.31.1")
     set('liquibase_hibernate', "4.31.1")
+    set('mapstruct', "1.6.3")
+    set('lombokMapstructBinding', "0.2.0")
 }
 
 dependencies {
@@ -55,9 +57,17 @@ dependencies {
     developmentOnly "org.springframework.boot:spring-boot-devtools"
     developmentOnly "org.springframework.boot:spring-boot-docker-compose"
 
-    //Spring Modulith Test  s
+    //Test
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation "org.springframework.modulith:spring-modulith-starter-test"
+
+    //RabbitMQ
+    implementation "org.springframework.boot:spring-boot-starter-amqp"
+
+    // Mapstruct
+    implementation "org.mapstruct:mapstruct:${mapstruct}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstruct}"
+    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBinding}"
 }
 
 dependencyManagement {

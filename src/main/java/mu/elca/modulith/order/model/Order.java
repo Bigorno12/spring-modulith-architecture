@@ -6,14 +6,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import mu.elca.modulith.common.Auditable;
 
 @Entity
-@Getter(AccessLevel.PRIVATE)
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "orders")
@@ -32,7 +33,7 @@ public class Order extends Auditable {
     @Column(name = "customer_email", nullable = false)
     private String customerEmail;
 
-    @Column(name = "customer_phone",  nullable = false)
+    @Column(name = "customer_phone", nullable = false)
     private String customerPhone;
 
     @Column(name = "delivery_address", nullable = false)

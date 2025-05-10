@@ -6,16 +6,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "product")
-@Getter(AccessLevel.PRIVATE)
 public class Product {
 
     @Id

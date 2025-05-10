@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Auditable {
+public abstract class Auditable {
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
