@@ -3,11 +3,11 @@ package mu.elca.modulith.order.dto;
 import lombok.Builder;
 
 @Builder
-public record OrderDto(String orderNumber, String customerName, String customerEmail, String customerPhone,
-                       String deliveryAddress, String productCode, String productName, String productPrice,
-                       Integer quantity, String status, String comments) {
+public record OrderView(String orderNumber, String customerName, String customerEmail, String customerPhone,
+                        String deliveryAddress, String productCode, String productName, String productPrice,
+                        Integer quantity, String status, String comments) {
 
-    public OrderDto {
+    public OrderView {
         if (orderNumber == null) {
             throw new IllegalArgumentException("orderNumber cannot be null");
         }

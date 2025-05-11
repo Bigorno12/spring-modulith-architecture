@@ -46,3 +46,8 @@ spring:
   docker:
     compose:
       lifecycle-management: start_and_stop
+  rabbitmq:
+    host: ${RB_HOST}
+    port: 5672
+    username: ${RB_USERNAME}
+    password: ${RB_PASSWORD}

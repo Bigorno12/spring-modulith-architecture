@@ -63,6 +63,7 @@ dependencies {
 
     //RabbitMQ
     implementation "org.springframework.boot:spring-boot-starter-amqp"
+    implementation "org.springframework.modulith:spring-modulith-events-amqp"
 
     // Mapstruct
     implementation "org.mapstruct:mapstruct:${mapstruct}"

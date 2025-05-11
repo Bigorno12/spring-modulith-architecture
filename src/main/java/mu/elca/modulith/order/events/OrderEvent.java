@@ -1,8 +1,10 @@
 package mu.elca.modulith.order.events;
 
 import lombok.Builder;
+import org.springframework.modulith.events.Externalized;
 
 @Builder
+@Externalized("BookStoreExchange::orders.new")
 public record OrderEvent(String orderNumber, String customerName, String customerEmail, String customerPhone) {
     public OrderEvent {
         if (orderNumber == null) {

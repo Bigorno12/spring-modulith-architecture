@@ -2,7 +2,7 @@ package mu.elca.modulith.order.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import mu.elca.modulith.order.dto.OrderDto;
+import mu.elca.modulith.order.dto.OrderView;
 import mu.elca.modulith.order.events.OrderEvent;
 import mu.elca.modulith.order.exception.ProductNotFoundException;
 import mu.elca.modulith.order.model.Order;
@@ -18,24 +18,24 @@ public class OrderServiceImpl {
     private final OrderRepository orderRepository;
     private final ApplicationEventPublisher eventPublisher;
 
-    public void createOrder(OrderDto orderDto) {
+    public void createOrder(OrderView orderView) {
         var order = new Order();
-        order.orderNumber(orderDto.orderNumber());
-        order.customerName(orderDto.customerName());
-        order.customerEmail(orderDto.customerEmail());
-        order.customerPhone(orderDto.customerPhone());
-        order.productCode(orderDto.productCode());
-        order.productPrice(orderDto.productPrice());
-        order.quantity(orderDto.quantity());
-        order.comments(orderDto.comments());
-        order.deliveryAddress(orderDto.deliveryAddress());
-        order.productName(orderDto.productName());
-        order.status(orderDto.status());
+        order.orderNumber(orderView.orderNumber());
+        order.customerName(orderView.customerName());
+        order.customerEmail(orderView.customerEmail());
+        order.customerPhone(orderView.customerPhone());
+        order.productCode(orderView.productCode());
+        order.productPrice(orderView.productPrice());
+        order.quantity(orderView.quantity());
+        order.comments(orderView.comments());
+        order.deliveryAddress(orderView.deliveryAddress());
+        order.productName(orderView.productName());
+        order.status(orderView.status());
         orderRepository.save(order);
     }
 
-    public OrderDto getOrder(Long id) {
-        OrderDto orderDto = orderRepository.findById(id).map(order -> OrderDto.builder()
+    public OrderView getOrder(Long id) {
+        OrderView orderView = orderRepository.findById(id).map(order -> OrderView.builder()
                         .orderNumber(order.orderNumber())
                         .customerName(order.customerName())
                         .customerEmail(order.customerEmail())
@@ -50,12 +50,12 @@ public class OrderServiceImpl {
                         .build())
                 .orElseThrow(() -> new ProductNotFoundException("Id does not exist"));
         eventPublisher.publishEvent(OrderEvent.builder()
-                .orderNumber(orderDto.orderNumber())
-                .customerName(orderDto.customerName())
-                .customerEmail(orderDto.customerEmail())
-                .customerPhone(orderDto.customerPhone())
+                .orderNumber(orderView.orderNumber())
+                .customerName(orderView.customerName())
+                .customerEmail(orderView.customerEmail())
+                .customerPhone(orderView.customerPhone())
                 .build()
         );
-        return orderDto;
+        return orderView;
     }
 }
