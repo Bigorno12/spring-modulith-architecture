@@ -32,10 +32,16 @@ public class OrderServiceImpl {
         order.productName(orderView.productName());
         order.status(orderView.status());
         orderRepository.save(order);
+        OrderEvent build = new OrderEvent(orderView.productCode(),
+                orderView.customerName(),
+                orderView.customerEmail(),
+                orderView.customerPhone(),
+                orderView.quantity());
+        eventPublisher.publishEvent(build);
     }
 
     public OrderView getOrder(Long id) {
-        OrderView orderView = orderRepository.findById(id).map(order -> OrderView.builder()
+        return orderRepository.findById(id).map(order -> OrderView.builder()
                         .orderNumber(order.orderNumber())
                         .customerName(order.customerName())
                         .customerEmail(order.customerEmail())
@@ -49,13 +55,5 @@ public class OrderServiceImpl {
                         .status(order.status())
                         .build())
                 .orElseThrow(() -> new ProductNotFoundException("Id does not exist"));
-        eventPublisher.publishEvent(OrderEvent.builder()
-                .orderNumber(orderView.orderNumber())
-                .customerName(orderView.customerName())
-                .customerEmail(orderView.customerEmail())
-                .customerPhone(orderView.customerPhone())
-                .build()
-        );
-        return orderView;
     }
 }
