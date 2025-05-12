@@ -40,12 +40,10 @@ spring:
   modulith:
     events:
       republish-outstanding-events-on-restart: true
-      completion-mode: archive
-  main:
-    lazy-initialization: true
+#      completion-mode: delete
   docker:
     compose:
-      lifecycle-management: start_and_stop
+      lifecycle-management: start_only
   rabbitmq:
     host: ${RB_HOST}
     port: 5672

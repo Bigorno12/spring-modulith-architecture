@@ -1,11 +1,13 @@
 package mu.elca.modulith.order.events;
 
 import lombok.Builder;
+import mu.elca.modulith.config.RabbitMQConfig;
 import org.springframework.modulith.events.Externalized;
 
 @Builder
-@Externalized("StoreExchange::order.new")
-public record OrderEvent(String productCode, String customerName, String customerEmail, String customerPhone, Integer quantity) {
+@Externalized(target = RabbitMQConfig.EXCHANGE_NAME)
+public record OrderEvent(String productCode, String customerName, String customerEmail, String customerPhone,
+                         Integer quantity) {
     public OrderEvent {
         if (productCode == null) {
             throw new IllegalArgumentException("orderNumber cannot be null");
