@@ -1,5 +1,6 @@
 package mu.elca.modulith.order.service;
 
+import jakarta.persistence.Table;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import mu.elca.modulith.order.dto.OrderView;
@@ -9,6 +10,7 @@ import mu.elca.modulith.order.model.Order;
 import mu.elca.modulith.order.repository.OrderRepository;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -18,6 +20,7 @@ public class OrderServiceImpl {
     private final OrderRepository orderRepository;
     private final ApplicationEventPublisher eventPublisher;
 
+    @Transactional
     public void createOrder(OrderView orderView) {
         var order = new Order();
         order.orderNumber(orderView.orderNumber());
